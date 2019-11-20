@@ -1,3 +1,3 @@
 # test
 
-<img src="./test.svg">
+<img src="./Test.svg">
