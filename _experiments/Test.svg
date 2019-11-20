@@ -1,0 +1,146 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style>
+:root {
+	--chart-height					: 400px;
+	--chart-height-num				: 400;
+	--chart-header-height			: 48px;
+	--chart-header-height-num		: 48;
+	--chart-footer-height			: 32px;
+	--chart-footer-height-num		: 32;
+	--chart-leftYaxis-width			: 48px;
+	--chart-group-margin			: 16px;
+	--chart-group-count				: 4;
+	--chart-column-width			: 32px;
+	--chart-column-count			: 2;
+}
+.header {
+	stroke		: none;
+	fill		: palegreen;
+	x			: 0px;
+	y			: 0px;
+	width		: 100%;
+	height		: var(--chart-header-height);
+}
+.footer {
+	stroke		: none;
+	fill		: palegreen;
+	x			: 0px;
+	y			: calc( 100% - var(--chart-footer-height));
+	width		: 100%;
+	height		: var(--chart-footer-height);
+}
+.leftYaxis {
+	stroke		: none;
+	fill		: palegoldenrod;
+	x			: 0px;
+	y			: var(--chart-header-height);
+	width		: var(--chart-leftYaxis-width);
+	height		: calc( 100% - var(--chart-header-height) - var(--chart-footer-height) );
+}
+
+.column {
+	width		: calc(var(--chart-column-width) - 1px);
+}
+
+.series1 {
+	x			: 0px;
+	fill		: hsl(240, 75%, 75%);
+	stroke		: hsl(240, 75%, 65%);
+}
+.series2 {
+	x			: var(--chart-column-width);
+	fill		: hsl(120, 75%, 75%);
+	stroke		: hsl(120, 75%, 65%);
+}
+
+#group1 {
+	transform	: translateX( calc(var(--chart-leftYaxis-width) + 1 * var(--chart-group-margin)) )
+				translateY( var(--chart-header-height) )
+				scaleY( calc( (var(--chart-height-num) - var(--chart-header-height-num) - var(--chart-footer-height-num)) / var(--chart-height-num)) );
+}
+#group2 {
+	transform	: translateX( calc(var(--chart-leftYaxis-width) + ( 1*var(--chart-column-count) + 1 ) * var(--chart-group-margin) + 1*var(--chart-column-count) * var(--chart-column-width)) )
+				translateY( var(--chart-header-height) )
+				scaleY( calc( (var(--chart-height-num) - var(--chart-header-height-num) - var(--chart-footer-height-num)) / var(--chart-height-num)) );
+}
+#group3 {
+	transform	: translateX( calc(var(--chart-leftYaxis-width) + ( 2*var(--chart-column-count) + 1 ) * var(--chart-group-margin) + 2*var(--chart-column-count) * var(--chart-column-width)) )
+				translateY( var(--chart-header-height) )
+				scaleY( calc( (var(--chart-height-num) - var(--chart-header-height-num) - var(--chart-footer-height-num)) / var(--chart-height-num)) );
+}
+#group4 {
+	transform	: translateX( calc(var(--chart-leftYaxis-width) + ( 3*var(--chart-column-count) + 1 ) * var(--chart-group-margin) + 3*var(--chart-column-count) * var(--chart-column-width)) )
+				translateY( var(--chart-header-height) )
+				scaleY( calc( (var(--chart-height-num) - var(--chart-header-height-num) - var(--chart-footer-height-num)) / var(--chart-height-num)) );
+}
+
+#drawarea {
+	x			: calc( var(--chart-leftYaxis-width) - 1px );
+	y			: calc( var(--chart-header-height) - 1px );
+	height		: calc( var(--chart-height) - var(--chart-header-height) - var(--chart-footer-height) + 2px);
+	width		: calc( 100% - var(--chart-leftYaxis-width) );
+}
+#drawarea--mid-line {
+	x			: calc( var(--chart-leftYaxis-width) - 1px );
+	y			: calc( ( var(--chart-height) - var(--chart-footer-height) - var(--chart-header-height) ) / 2 + var(--chart-header-height) );
+	height		: 1px;
+	width		: calc( 100% - var(--chart-leftYaxis-width) );
+}
+#leftYaxis--max-caption {
+	transform	: translateY( calc( var(--chart-header-height) ) );
+}
+#leftYaxis--mid-caption {
+	transform	: translateY( calc( ( var(--chart-height) - var(--chart-footer-height) - var(--chart-header-height) )/2 + var(--chart-header-height) ) );
+}
+#leftYaxis--min-caption {
+	transform	: translateY( calc( var(--chart-height) - var(--chart-footer-height) ) );
+}
+
+.series1:hover {
+	fill		: hsl(240, 75%, 65%);;
+}
+.series2:hover {
+	fill		: hsl(120, 75%, 65%);;
+}
+</style>
+
+
+<desc>Created with Highcharts 7.2.1</desc>
+	<rect class="header"/>
+	<rect class="footer"/>
+	
+	<g class="leftYaxis">
+		<rect class="leftYaxis"/>
+		<text x="10" y="50%" fill="black" font-size="10pt" writing-mode ="tb" text-anchor="middle" dominant-baseline="central">Milliseconds</text>
+		<rect id="drawarea" stroke="black" fill="none"/>
+		<rect id="drawarea--mid-line" stroke="none" fill="black"/>
+		<text id="leftYaxis--max-caption" x="40" fill="black" font-size="10pt" text-anchor="end" dominant-baseline="text-before-edge">10</text>
+		<text id="leftYaxis--mid-caption" x="40" fill="black" font-size="10pt" text-anchor="end" dominant-baseline="central">5</text>
+		<text id="leftYaxis--min-caption" x="40" fill="black" font-size="10pt" text-anchor="end" dominant-baseline="text-after-edge">0</text>
+	</g>
+	
+	<text tag="title" fill="black" x="50%" y="20px" font-size="16pt" font-weight="normal" font-family="Arial, Verdana, sans-serif" font-style="normal" text-anchor="middle" dominant-baseline="bottom">Test Chart</text>
+
+	<g id="group1">
+		<rect class="column series1" y="calc( 100% - 100% *  5662462 / 10000000 )" height="calc( 100% *  5662462 / 10000000 )">
+			<title>test</title>
+		</rect>
+		<rect class="column series2" y="calc( 100% - 100% *  5751027 / 10000000 )" height="calc( 100% *  5751027 / 10000000 )" />
+	</g>
+
+	<g id="group2">
+		<rect class="column series1" y="calc( 100% - 100% *  6797900 / 10000000 )" height="calc( 100% *  6797900 / 10000000 )"/>
+		<rect class="column series2" y="calc( 100% - 100% *  2803037 / 10000000 )" height="calc( 100% *  2803037 / 10000000 )" />
+	</g>
+
+	<g id="group3">
+		<rect class="column series1" y="calc( 100% - 100% *  4660632 / 10000000 )" height="calc( 100% *  4660632 / 10000000 )"/>
+		<rect class="column series2" y="calc( 100% - 100% *  1789003 / 10000000 )" height="calc( 100% *  1789003 / 10000000 )" />
+	</g>
+
+	<g id="group4">
+		<rect class="column series1" y="calc( 100% - 100% *   245995 / 10000000 )" height="calc( 100% *   245995 / 10000000 )"/>
+		<rect class="column series2" y="calc( 100% - 100% *   4000 / 10000000 )" height="calc( 100% *   4000 / 10000000 )" />
+	</g>
+	
+</svg>
